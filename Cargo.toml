@@ -1,0 +1,39 @@
+[package]
+name = "rust_slither"
+version = "0.1.0"
+edition = "2021"
+description = "Slither.io game server in Rust"
+authors = ["XBACT"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# WebSocket
+tokio-tungstenite = "0.21"
+futures-util = "0.3"
+
+# Serialization
+bytes = "1.5"
+byteorder = "1.5"
+
+# Utilities
+rand = "0.8"
+parking_lot = "0.12"
+dashmap = "5.5"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Configuration
+clap = { version = "4.4", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
